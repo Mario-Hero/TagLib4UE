@@ -44,8 +44,8 @@ public class TagLib2 : ModuleRules
             PublicAdditionalLibraries.Add(Path.Combine(SourceThirdPartyPath, "TagLib2Library", "lib", "Win64", "tag.lib"));
             PublicDelayLoadDLLs.Add("tag.dll");
             PublicDelayLoadDLLs.Add("zlib1.dll");
-            RuntimeDependencies.Add(new RuntimeDependency(Path.Combine(SourceThirdPartyPath, "TagLib2Library", "bin","Win64", "zlib1.dll")));
-            RuntimeDependencies.Add(new RuntimeDependency(Path.Combine(SourceThirdPartyPath, "TagLib2Library", "bin","Win64", "tag.dll")));
+            RuntimeDependencies.Add(Path.Combine(BinariesThirdPartyPath, "TagLib2Library", "Win64", "zlib1.dll"));
+            RuntimeDependencies.Add(Path.Combine(BinariesThirdPartyPath, "TagLib2Library", "Win64", "tag.dll"));
         }
         PublicDependencyModuleNames.AddRange(
 			new string[]
