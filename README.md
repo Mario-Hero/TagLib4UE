@@ -28,4 +28,6 @@ Only supports Windows x64. Tested successfully on Unreal Engine 4.27.2, not test
 
 ## License
 
-TagLib4UE is distributed under the [GNU Lesser General Public License](https://www.gnu.org/licenses/lgpl.html) (LGPL)
+TagLib4UE is distributed under MIT License.
+
+[TagLib](https://github.com/taglib/taglib) is distributed under the [GNU Lesser General Public License](https://www.gnu.org/licenses/lgpl.html) (LGPL) and [Mozilla Public License](https://www.mozilla.org/MPL/MPL-1.1.html) (MPL). 
