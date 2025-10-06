@@ -20,5 +20,16 @@
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
 		}
-	]
-}
+	],
+	"SupportedTargetPlatforms": [
+		"Win64"
+	],
+	"PreBuildSteps": {
+		"Win64": [
+			"echo TagLib2Library:PreBuildSteps:$(TargetType):$(TargetName)",
+			"echo Copy TagLib runtime dependencies...",
+			"robocopy /s /e /v /njh /njs /np /ndl /xn /xo \"$(PluginDir)\\Source\\ThirdParty\\TagLib2Library\\bin\" \"$(PluginDir)\\Binaries\\ThirdParty\\TagLib2Library\"",
+			"if %ERRORLEVEL% LSS 8 (exit /B 0) else (exit /B %ERRORLEVEL%)"
+		]
+	}
+	}

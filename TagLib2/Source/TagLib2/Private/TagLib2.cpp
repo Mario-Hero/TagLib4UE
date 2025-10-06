@@ -27,15 +27,12 @@ void FTagLib2Module::StartupModule()
 #if PLATFORM_WINDOWS
 	LibraryPath = FPaths::Combine(*BaseDir, TEXT("Binaries/ThirdParty/TagLib2Library/Win64/tag.dll"));
 	DependPath = FPaths::Combine(*BaseDir, TEXT("Binaries/ThirdParty/TagLib2Library/Win64/zlib1.dll"));
-	if (!FPaths::FileExists(*DependPath)) {
-		FMessageDialog::Open(EAppMsgType::Ok, LOCTEXT("ThirdPartyLibraryError", "zlib1.dll not exist"));
-	}
 #elif PLATFORM_MAC
 	LibraryPath = FPaths::Combine(*BaseDir, TEXT("Source/ThirdParty/TagLib2Library/Mac/Release/tag.dylib"));
 #elif PLATFORM_LINUX
 	LibraryPath = FPaths::Combine(*BaseDir, TEXT("Binaries/ThirdParty/TagLib2Library/Linux/x86_64-unknown-linux-gnu/tag.so"));
 #endif // PLATFORM_WINDOWS
-	if (FPlatformProcess::GetDllHandle(*DependPath))
+	if (!DependPath.IsEmpty() && FPlatformProcess::GetDllHandle(*DependPath))
 	{
 		ExampleLibraryHandle = !LibraryPath.IsEmpty() ? FPlatformProcess::GetDllHandle(*LibraryPath) : nullptr;
 		if (ExampleLibraryHandle)

@@ -14,25 +14,24 @@ public class TagLib2Library : ModuleRules
         if (Target.Platform == UnrealTargetPlatform.Win64)
         {
             // Add the import library
-            PublicAdditionalLibraries.Add(Path.Combine(ModuleDirectory, "x64", "Release", "tag.lib"));
+            PublicAdditionalLibraries.Add(Path.Combine(ModuleDirectory, "lib", "Win64", "tag.lib"));
 
             // Delay-load the DLL, so we can load it from the right place first
             PublicDelayLoadDLLs.Add("tag.dll");
+            PublicDelayLoadDLLs.Add("zlib1.dll");
 
             // Ensure that the DLL is staged along with the executable
-            RuntimeDependencies.Add("$(PluginDir)/Binaries/ThirdParty/TagLib2Library/Win64/tag.dll");
+            RuntimeDependencies.Add(Path.Combine(ModuleDirectory, "bin", "Win64", "tag.dll"));
+            RuntimeDependencies.Add(Path.Combine(ModuleDirectory, "bin", "Win64", "zlib1.dll"));
         }
         else if (Target.Platform == UnrealTargetPlatform.Mac)
         {
-            PublicDelayLoadDLLs.Add(Path.Combine(ModuleDirectory, "Mac", "Release", "tag.dylib"));
-            RuntimeDependencies.Add("$(PluginDir)/Source/ThirdParty/TagLib2Library/Mac/Release/tag.dylib");
+            PublicDelayLoadDLLs.Add(Path.Combine(ModuleDirectory, "lib", "Mac", "tag.dylib"));
+            //RuntimeDependencies.Add(Path.Combine(ModuleDirectory, "bin", "Mac", "tag.dll"));
         }
         else if (Target.Platform == UnrealTargetPlatform.Linux)
         {
-            string ExampleSoPath = Path.Combine("$(PluginDir)", "Binaries", "ThirdParty", "TagLib2Library", "Linux", "x86_64-unknown-linux-gnu", "tag.so");
-            PublicAdditionalLibraries.Add(ExampleSoPath);
-            PublicDelayLoadDLLs.Add(ExampleSoPath);
-            RuntimeDependencies.Add(ExampleSoPath);
+            PublicDelayLoadDLLs.Add(Path.Combine(ModuleDirectory, "lib", "Linux", "tag.so"));
         }
     }
 }
