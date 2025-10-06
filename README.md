@@ -1,7 +1,7 @@
 # TagLib4UE
-[TagLib](https://taglib.org/) 的虚幻引擎插件
+[TagLib](https://taglib.org/) 的虚幻引擎插件。仅支持获取tag信息。
 
-[TagLib](https://taglib.org/) plugin for Unreal Engine
+[TagLib](https://taglib.org/) plugin for Unreal Engine. Only support getting tag info.
 
 
 
